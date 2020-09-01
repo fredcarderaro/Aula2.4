@@ -1,12 +1,15 @@
 /* Imports */
 import express from 'express';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 import { studentRouter } from './routes/studentRouter.js';
 
 const app = express();
+app.use(express.json());
+app.use(studentRouter);
 
-require('dotenv').config();
+dotenv.config();
 
 /* Conexão com o MongoDB*/
 (async () => {
@@ -24,8 +27,5 @@ require('dotenv').config();
     console.log('Connection fail: ' + err);
   }
 })();
-
-app.use(express.json());
-app.use(studentRouter);
 
 app.listen(process.env.PORT, () => console.log('API iniciada'));
