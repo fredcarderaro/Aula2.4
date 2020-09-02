@@ -50,14 +50,16 @@ app.patch('/student/:id', async (req, res) => {
 app.put('/student/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    const student = req.body;
-    student.name = 'camilas';
 
-    const student = await studentModel.findByIdAndUpdate({ _id: id }, student, {
-      new: true,
-    });
+    // const student = await studentModel.findByIdAndUpdate(
+    //   { _id: id },
+    //   req.body,
+    //   {
+    //     new: true,
+    //   }
+    // );
 
-    res.send(student);
+    res.send(req.body);
   } catch (err) {
     res.status(500).send(err);
   }
