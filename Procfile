@@ -1,1 +1,1 @@
-web: node -r dotenv/conig --experimental-modules app.js
+node -r dotenv/conig --experimental-modules app.js
